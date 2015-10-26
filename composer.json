@@ -1,0 +1,26 @@
+{
+    "name": "pavle/yii2-location-picker",
+    "description": "yii2 location picker",
+    "type": "yii2-extension",
+    "keywords": ["yii2","extension","location picker"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Pavle",
+            "email": "523260513@qq.com"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "*",
+        "bower-asset/jquery-locationpicker-plugin": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "pavle\\location\\picker\\": ""
+        }
+    },
+    "repositories": [
+        {"type": "composer", "url": "http://packagist.phpcomposer.com"},
+        {"packagist": false}
+    ]
+}
