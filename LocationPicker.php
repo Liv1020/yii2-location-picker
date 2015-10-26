@@ -29,6 +29,8 @@ class LocationPicker extends InputWidget
 
     public function run()
     {
+        $this->registerPlugin();
+
         return Html::tag('div', '', $this->options);
     }
 
