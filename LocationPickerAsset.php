@@ -12,11 +12,11 @@ use yii\web\AssetBundle;
 
 class LocationPickerAsset extends AssetBundle
 {
-    public $sourcePath = '@bower/';
+    public $sourcePath = '@bower/jquery-locationpicker-plugin/dist';
 
     public $js = [
         'http://maps.google.com/maps/api/js?sensor=false&libraries=places',
-        'js/locationpicker.jquery.js',
+        'locationpicker.jquery.js',
     ];
 
     public $depends = [
