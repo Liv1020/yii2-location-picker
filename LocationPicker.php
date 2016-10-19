@@ -37,7 +37,7 @@ class LocationPicker extends InputWidget
         parent::init();
 
         if (!$this->key) {
-            throw new ErrorException('Set key:');
+            throw new ErrorException('Set key: https://developers.google.com/maps/documentation/javascript/get-api-key?hl=zh-cn');
         }
 
         $this->options['id'] = $this->id;
