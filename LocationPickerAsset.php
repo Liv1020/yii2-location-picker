@@ -15,7 +15,6 @@ class LocationPickerAsset extends AssetBundle
     public $sourcePath = '@bower/jquery-locationpicker-plugin/dist';
 
     public $js = [
-        'http://maps.google.com/maps/api/js?sensor=false&libraries=places',
         'locationpicker.jquery.js',
     ];
 

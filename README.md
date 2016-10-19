@@ -28,5 +28,25 @@ Usage
 Once the extension is installed, simply use it in your code by  :
 
 ```php
-<?= \pavle\location\picker\AutoloadExample::widget(); ?>
+Location: <input type="text" id="us2-address" style="width: 200px"/>
+Radius: <input type="text" id="us2-radius"/>
+Lat.: <input type="text" id="us2-lat"/>
+Long.: <input type="text" id="us2-lon"/>
+<?= $form->field($model, 'coordinates')->widget(LocationPicker::className(), [
+    'id' => 'input-coordinates',
+    'pattern' => '%longitude%,%latitude%',
+    'pluginOptions' => [
+        'location' => [
+            'latitude' => $model->getLatitude(),
+            'longitude' => $model->getLongitude(),
+        ],
+        'inputBinding' => [
+            'latitudeInput' => new JsExpression("$('#us2-lat')"),
+            'longitudeInput' => new JsExpression("$('#us2-lon')"),
+            'radiusInput' => new JsExpression("$('#us2-radius')"),
+            'locationNameInput' => new JsExpression("$('#us2-address')"),
+        ],
+        'enableAutocomplete' => true,
+    ],
+]) ?>
 ```

@@ -1,6 +1,8 @@
 <?php
 
 namespace pavle\location\picker;
+
+use yii\base\ErrorException;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\helpers\Json;
@@ -12,9 +14,20 @@ use yii\widgets\InputWidget;
  */
 class LocationPicker extends InputWidget
 {
+    /**
+     * @var array
+     */
     public $pluginOptions = [];
 
+    /**
+     * @var string
+     */
     public $pattern = '%latitude%,%longitude%';
+
+    /**
+     * @var string
+     */
+    public $key;
 
     /**
      * @inheritDoc
@@ -22,6 +35,10 @@ class LocationPicker extends InputWidget
     public function init()
     {
         parent::init();
+
+        if (!$this->key) {
+            throw new ErrorException('Set key:');
+        }
 
         $this->options['id'] = $this->id;
 
@@ -47,6 +64,9 @@ class LocationPicker extends InputWidget
         }
     }
 
+    /**
+     * @inheritdoc
+     */
     public function run()
     {
         $this->registerPlugin();
@@ -55,8 +75,15 @@ class LocationPicker extends InputWidget
         return $input . Html::tag('div', '', $this->options);
     }
 
+    /**
+     * 注册插件
+     */
     public function registerPlugin(){
-        LocationPickerAsset::register($this->view);
+        $view = $this->view;
+
+        $view->registerJsFile("http://maps.google.com/maps/api/js?key={$this->key}&libraries=places");
+
+        LocationPickerAsset::register($view);
 
         $pluginOptions = Json::encode($this->pluginOptions);
         $js = <<<JS
